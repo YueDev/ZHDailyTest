@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.mob.sdk'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.allsunny.zhihudailykotlin"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('D:\\Android\\key\\yuekey.jks')
+            keyAlias 'key0'
+            keyPassword 'ashgenius0'
+            storePassword 'ashgenius0'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+MobSDK {
+    appKey "29d7f467e0194"
+    appSecret "84fd51b0c36971a389efd47e11b81b74"
+    ShareSDK {
+        devInfo {
+            Wechat {
+                appId "wx6d264d9ca4488749"
+                appSecret "7d44da0ef86122ef7a3f8bf4cff925b2"
+                userName "gh_afb25ac019c9"
+                path "pages/index/index.html?id=1"
+                withShareTicket true
+                miniprogramType 2
+            }
+            QQ {
+                appId "100371282"
+                appKey "aed9b0303e3ed1e27bae87c33761161d"
+            }
+            WechatMoments {
+                appId "wx6d264d9ca4488749"
+                appSecret "7d44da0ef86122ef7a3f8bf4cff925b2"
+            }
+            WechatFavorite {
+                appId "wx6d264d9ca4488749"
+                appSecret "7d44da0ef86122ef7a3f8bf4cff925b2"
+            }
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //Logger
+    implementation 'com.orhanobut:logger:2.2.0'
+    //leakCanary
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    //腾讯 bugly
+//    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    //rxjava、rxAndroid
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+}
