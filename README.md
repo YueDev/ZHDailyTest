@@ -1,2 +1,2 @@
-# ZhihuDailyKotlin
-仿知乎日报官方app，采用kotlin编写
+# ZHDailyTest
+很早之前的一个java项目，学着用kotlin重新写了一遍。
